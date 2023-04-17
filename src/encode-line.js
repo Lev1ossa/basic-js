@@ -1,3 +1,4 @@
+const { keyIn } = require('readline-sync');
 const { NotImplementedError } = require('../extensions/index.js');
 
 /**
@@ -10,9 +11,24 @@ const { NotImplementedError } = require('../extensions/index.js');
  * For aabbbc should return 2a3bc
  *
  */
-function encodeLine(/* str */) {
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
+function encodeLine(str) {
+  let counter = 0;
+  let prevChar = str[0];
+  let resultStr = '';
+  if (str) {
+    for (let i = 0; i < str.length; i++) {
+        if(str[i] == prevChar) {
+          counter++;
+        } else {
+          resultStr = resultStr + (counter == 1 ? '' : counter) + prevChar;
+          counter = 1;
+          prevChar = str[i];
+        }
+    }
+    resultStr = resultStr + (counter == 1 ? '' : counter) + prevChar;
+  }
+  
+  return resultStr;
 }
 
 module.exports = {
