@@ -1,4 +1,3 @@
-const { keyIn } = require('readline-sync');
 const { NotImplementedError } = require('../extensions/index.js');
 
 /**
